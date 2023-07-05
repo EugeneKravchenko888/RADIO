@@ -1,12 +1,21 @@
 package ru.netology.javaqa;
 
 public class Radio {
-    private int maxStation;
-    private int minStation;
-    private int currentStation;
-    private int maxVolume;
-    private int minVolume;
+    private int maxStation = 10;
+    private int minStation = 0;
+    private int currentStation = 10;
+    private int maxVolume = 100;
+    private int minVolume = 0;
     private int currentVolume;
+
+    public Radio() { // Не параметризированный конструктор
+    }
+    
+    public Radio(int mxVol, int minVol, int crVol) { // Параметризированный конструктор
+        maxVolume = mxVol;
+        minVolume = minVol;
+        currentVolume = crVol;
+    }
 
     // Опции Радиоcтанций
     public int getMaxStation() {
@@ -24,7 +33,6 @@ public class Radio {
     public void setMinStation(int minStation) {
         this.minStation = minStation;
     }
-
     public int getCurrentStation() {
         return currentStation;
     }
@@ -42,7 +50,7 @@ public class Radio {
     public void nextCurrentStation() {
         int currentStation = this.currentStation;
         if (currentStation >= maxStation) {
-            this.currentStation = minStation;
+            this.currentStation = maxStation;
         } else {
             this.currentStation = currentStation + 1;
         }
@@ -61,7 +69,7 @@ public class Radio {
         if (currentStation > maxStation) {
             this.currentStation = maxStation;
         } else if (currentStation < minStation) {
-            this.currentStation = minStation;
+            setCurrentStation(minStation);
         } else {
             this.currentStation = currentStation;
         }
