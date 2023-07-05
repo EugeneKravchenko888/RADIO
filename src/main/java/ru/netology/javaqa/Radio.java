@@ -10,7 +10,7 @@ public class Radio {
 
     public Radio() { // Не параметризированный конструктор
     }
-    
+
     public Radio(int mxVol, int minVol, int crVol) { // Параметризированный конструктор
         maxVolume = mxVol;
         minVolume = minVol;
@@ -66,9 +66,10 @@ public class Radio {
     }
 
     public void remoteCurrentStation(int currentStation) {
-        if (currentStation > maxStation) {
-            this.currentStation = maxStation;
-        } else if (currentStation < minStation) {
+        if (currentStation >= maxStation) {
+            setCurrentStation(maxStation);
+        }
+        if (currentStation <= minStation) {
             setCurrentStation(minStation);
         } else {
             this.currentStation = currentStation;
@@ -80,9 +81,9 @@ public class Radio {
         return maxVolume;
     }
 
-    public void setMaxVolume(int maxVolume) {
-        this.maxVolume = maxVolume;
-    }
+    //public void setMaxVolume(int maxVolume) {
+   //     this.maxVolume = maxVolume;
+    //}
 
     public int getMinVolume() {
         return minVolume;
