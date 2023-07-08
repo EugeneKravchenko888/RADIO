@@ -11,11 +11,14 @@ public class Radio {
     public Radio() { // Не параметризированный конструктор
     }
 
-    public Radio(int mxVol, int minVol, int crVol) { // Параметризированный конструктор
+    public Radio(int mxVol, int minVol, int crVol) { // Параметризированный конструктор Volume
         maxVolume = mxVol;
         minVolume = minVol;
         currentVolume = crVol;
     }
+    public Radio(int maxSt) { // Параметризированный конструктор с одним параметром - количеством станций
+        maxStation = maxSt;
+    } // Параметризированный конструктор Station
 
     // Опции Радиоcтанций
     public int getMaxStation() {
@@ -75,6 +78,7 @@ public class Radio {
             this.currentStation = currentStation;
         }
     }
+
 
     // Опции Громкости
     public int getMaxVolume() {
