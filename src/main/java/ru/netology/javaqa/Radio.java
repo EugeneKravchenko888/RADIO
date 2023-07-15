@@ -1,12 +1,21 @@
 package ru.netology.javaqa;
 
 public class Radio {
-    private int maxStation;
-    private int minStation;
-    private int currentStation;
-    private int maxVolume;
-    private int minVolume;
+    private int maxStation = 9;
+    private int minStation = 0;
+    private int currentStation = 9; // изменяя currentStation получаем нужное количество станций
+    private int maxVolume = 100;
+    private int minVolume = 0;
     private int currentVolume;
+
+
+    public Radio() { // Не параметризированный конструктор
+    }
+
+    public Radio(int currentStation) {  // Параметризированный конструктор
+        this.currentStation = currentStation;
+        maxStation = currentStation - 1;
+    }
 
     // Опции Радиоcтанций
     public int getMaxStation() {
@@ -24,7 +33,6 @@ public class Radio {
     public void setMinStation(int minStation) {
         this.minStation = minStation;
     }
-
     public int getCurrentStation() {
         return currentStation;
     }
@@ -42,7 +50,7 @@ public class Radio {
     public void nextCurrentStation() {
         int currentStation = this.currentStation;
         if (currentStation >= maxStation) {
-            this.currentStation = minStation;
+            this.currentStation = maxStation;
         } else {
             this.currentStation = currentStation + 1;
         }
@@ -58,10 +66,11 @@ public class Radio {
     }
 
     public void remoteCurrentStation(int currentStation) {
-        if (currentStation > maxStation) {
-            this.currentStation = maxStation;
-        } else if (currentStation < minStation) {
-            this.currentStation = minStation;
+        if (currentStation >= maxStation) {
+            setCurrentStation(maxStation);
+        }
+        if (currentStation <= minStation) {
+            setCurrentStation(minStation);
         } else {
             this.currentStation = currentStation;
         }
@@ -72,9 +81,9 @@ public class Radio {
         return maxVolume;
     }
 
-    public void setMaxVolume(int maxVolume) {
-        this.maxVolume = maxVolume;
-    }
+    //public void setMaxVolume(int maxVolume) {
+    //     this.maxVolume = maxVolume;
+    //}
 
     public int getMinVolume() {
         return minVolume;
