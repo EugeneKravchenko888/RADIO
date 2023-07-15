@@ -1,20 +1,21 @@
 package ru.netology.javaqa;
 
 public class Radio {
-    private int maxStation = 10;
+    private int maxStation = 9;
     private int minStation = 0;
-    private int currentStation = 10;
+    private int currentStation = 9; // изменяя currentStation получаем нужное количество станций
     private int maxVolume = 100;
     private int minVolume = 0;
     private int currentVolume;
 
+
     public Radio() { // Не параметризированный конструктор
     }
 
-    public Radio(int maxSt) { // Параметризированный конструктор с одним параметром - количеством станций
-
-        maxStation = maxSt;
-    } // Параметризированный конструктор Station
+    public Radio(int currentStation) {  // Параметризированный конструктор
+        this.currentStation = currentStation;
+        maxStation = currentStation - 1;
+    }
 
     // Опции Радиоcтанций
     public int getMaxStation() {
